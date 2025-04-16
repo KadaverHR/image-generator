@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "BlackOpsOne";
+  src: url('BlackOpsOne.woff2') format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background: #fafafa;
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+/* #template {
+  display: none;
+} */
+
+.canvas {
+  width: 900px;
+  height: 1200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  background: url(test.png);
+}
+
+.canvas__block {
+  display: grid;
+  align-content: start;
+  padding-top: 150px;
+  gap: 190px;
+}
+
+.canvas__title {
+  font-size: 130px;
+  color: #871111;
+  font-family: 'BlackOpsOne';
+  text-transform: uppercase;
+  display: grid;
+  justify-content: center;
+  white-space: nowrap;
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.canvas__desc {
+  font-size: 35px;
+  color: #e5e6f1;
+  display: grid;
+  padding-left: 60px;
+  padding-right: 100px;
+}
+
+#progress-bar {
+  height: 20px;
+  background: #4CAF50;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+#log {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background: white;
+}

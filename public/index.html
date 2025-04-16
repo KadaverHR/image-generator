@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Генератор изображений брендов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="html2canvas.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="controls">
+    <h2>Генератор изображений брендов</h2>
+    <button id="generateBtn">Сгенерировать все изображения</button>
+    <div id="progress-bar" class="progress-bar">
+      <div id="progress" class="progress"></div>
+    </div>
+    <div id="status">Готов к работе</div>
+    <div id="log" class="log"></div>
+    <button id="clearLogsBtn" style="margin-top: 10px;">Очистить логи</button>
+  </div>
+  <!-- Шаблон для генерации -->
+  <div id="template" style="display: none;">
+    <div class="canvas">
+      <div class="canvas__block">
+        <h1 class="canvas__title"></h1>
+        <p class="canvas__desc"></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
