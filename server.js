@@ -3,6 +3,7 @@ const multer = require('multer');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const { transliterate } = require('transliteration');
 
 const app = express();
 const PORT = 3000;
@@ -46,11 +47,26 @@ app.get('/api/brands', (req, res) => {
 // Настройка Multer для пакетной загрузки
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, 'uploads'));
+    const uploadDir = path.join(__dirname, 'uploads');
+    fs.mkdirSync(uploadDir, { recursive: true });
+    cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
-    const timestamp = Date.now();
-    cb(null, `${timestamp}-${file.originalname}`);
+    // Получаем имя, переданное клиентом
+    let originalName = file.originalname;
+
+    // Транслитерируем и очищаем
+    let cleanedName = transliterate(originalName)
+      .replace(/[<>:"\/\\|?*]/g, '') // Удаляем запрещенные символы
+      .replace(/\s+/g, '_') // Пробелы → _
+      .replace(/,+/g, ''); // Удаляем запятые
+
+    // Гарантируем наличие расширения
+    const ext = path.extname(cleanedName) || '.png';
+    const base = path.basename(cleanedName, ext);
+    const finalName = `${base}${ext}`; // Без добавления уникальных суффиксов
+
+    cb(null, finalName); // Просто вернём имя — multer перезапишет если уже есть
   }
 });
 
