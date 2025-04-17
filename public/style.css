@@ -6,6 +6,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "NeueMachina";
+  src: url('NeueMachina.woff2') format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
   padding: 20px;
@@ -27,13 +39,14 @@ body {
   background-repeat: no-repeat;
   display: grid;
   background: url(test.png);
+  overflow: hidden;
 }
 
 .canvas__block {
   display: grid;
-  align-content: start;
-  padding-top: 150px;
-  gap: 190px;
+  padding-top: 115px;
+  padding-bottom: 115px;
+  align-content: space-between;
 }
 
 .canvas__title {
@@ -45,8 +58,9 @@ body {
   justify-content: center;
   white-space: nowrap;
   position: relative;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
 }
 
 .canvas__desc {
@@ -56,6 +70,29 @@ body {
   padding-left: 60px;
   padding-right: 100px;
 }
+
+
+.canvas__title-block {
+  display: grid;
+  padding: 30px;
+  border-radius: 4px;
+  background: linear-gradient(89deg, #f2eed6 0%, #f8f8ff 100%);
+  position: relative;
+  left: 30px;
+}
+
+.canvas__title-block::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border: 3px solid linear-gradient(89deg, #f2eed6 0%, #f8f8ff 100%);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+}
+
 
 #progress-bar {
   height: 20px;
