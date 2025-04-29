@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "NeueMachina";
-  src: url('NeueMachina.woff2') format("woff2");
+  src: url('NeueMachina-Light.woff2') format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -22,6 +22,10 @@ body {
   font-family: sans-serif;
   padding: 20px;
   background: #fafafa;
+}
+
+p {
+  margin: 0;
 }
 
 .controls {
@@ -50,12 +54,14 @@ body {
 }
 
 .canvas__title {
+  display: inline;
+  text-align: center;
   font-size: 130px;
   color: #871111;
   font-family: 'BlackOpsOne';
   text-transform: uppercase;
-  display: grid;
-  justify-content: center;
+  align-self: center;
+  justify-self: center;
   white-space: nowrap;
   position: relative;
   margin-block-start: 0;
@@ -64,7 +70,8 @@ body {
 }
 
 .canvas__desc {
-  font-size: 35px;
+  font-family: "NeueMachina";
+  font-size: 30px;
   color: #e5e6f1;
   display: grid;
   padding-left: 60px;
@@ -74,9 +81,9 @@ body {
 
 .canvas__title-block {
   display: grid;
-  padding: 30px;
+  padding: 30px 60px 30px 30px;
   border-radius: 4px;
-  background: linear-gradient(89deg, #f2eed6 0%, #f8f8ff 100%);
+  background: linear-gradient(89deg, rgba(242, 238, 214, 0.8) 0%, rgba(248, 248, 255, 0.8) 100%);
   position: relative;
   left: 30px;
 }
@@ -88,11 +95,74 @@ body {
   left: 50%;
   width: calc(100% + 6px);
   height: calc(100% + 6px);
-  border: 3px solid linear-gradient(89deg, #f2eed6 0%, #f8f8ff 100%);
+  border: 3px solid rgba(242, 238, 214, 0.7);
   border-radius: 4px;
   transform: translate(-50%, -50%);
+  filter: blur(1px);
 }
 
+.canvas__desc-block {
+  display: grid;
+  padding: 30px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(135, 17, 17, 0.8) 0%, rgba(87, 4, 4, 0.8) 100%);
+  position: relative;
+  right: 30px;
+}
+
+.canvas__desc-block::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border: 3px solid rgba(96, 14, 14, 0.7);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  filter: blur(1px);
+}
+
+
+.canvas__country-block {
+  display: grid;
+  padding: 30px 60px 30px 30px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(19, 45, 75, 0.8) 36.54%, rgba(0, 18, 38, 0.8) 100%);
+  position: relative;
+  left: 30px;
+  justify-self: end;
+  align-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.canvas__country-block::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border: 3px solid rgba(21, 42, 66, 0.7);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  filter: blur(1px);
+}
+
+
+.canvas__country-title {
+  font-family: "neueMachina";
+  font-size: 25px;
+  color: #e5e6f1;
+}
+
+.canvas__country {
+  font-family: "blackOpsOne";
+  font-size: 35px;
+  color: #e5e6f1;
+  text-transform: uppercase;
+}
 
 #progress-bar {
   height: 20px;
@@ -107,4 +177,112 @@ body {
   border: 1px solid #ddd;
   padding: 10px;
   background: white;
+}
+
+
+
+
+.valves {
+  width: 900px;
+  height: 1200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  background: url(valves.jpg);
+  overflow: hidden;
+}
+
+.valves__block {
+  display: grid;
+  padding-top: 115px;
+  padding-bottom: 115px;
+  align-content: space-between;
+}
+
+.valves__title-block {
+  display: grid;
+  padding: 30px 60px 30px 30px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(135, 17, 17, 0.8) 0%, rgba(87, 4, 4, 0.8) 100%);
+  position: relative;
+  left: 30px;
+}
+
+.valves__title {
+  display: inline;
+  text-align: center;
+  font-size: 130px;
+  color: #e5e6f1;
+  font-family: 'BlackOpsOne';
+  text-transform: uppercase;
+  align-self: center;
+  justify-self: center;
+  white-space: nowrap;
+  position: relative;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+}
+
+.valves__title-block::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border: 3px solid rgba(96, 14, 14, 0.7);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  filter: blur(1px);
+}
+
+.valves__img-block {
+  display: grid;
+  padding: 30px 30px 30px 30px;
+  border-radius: 4px;
+  background: linear-gradient(91deg, rgba(248, 248, 255, 0) 0%, #f8f8ff 15.87%, #f2eed6 49.04%, #f8f8ff 84.13%, rgba(248, 248, 255, 0) 100%);
+  position: relative;
+  gap: 0px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.valves__name {
+  font-family: 'NeueMachina';
+  font-weight: 600;
+  font-size: 80px;
+  color: #132d4b;
+}
+
+.valves__desc-block {
+  display: grid;
+  padding: 30px 30px 30px 60px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(19, 45, 75, 0.8) 36.54%, rgba(0, 18, 38, 0.8) 100%);
+  position: relative;
+  right: 30px;
+  justify-self: start;
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.valves__desc-block::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border: 3px solid rgba(21, 42, 66, 0.7);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  filter: blur(1px);
+}
+
+.valves__desc {
+  font-family: "neueMachina";
+  font-size: 25px;
+  color: #e5e6f1;
 }

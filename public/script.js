@@ -86,8 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
       clone.querySelector('.canvas__title').textContent = brand.brand || 'Без названия';
       clone.querySelector('.canvas__desc').textContent = brand.description || 'Описание отсутствует';
       clone.querySelector('.canvas__country').textContent = brand.country;
+      ///побираем шрифт по бренду
 
       container.appendChild(clone);
+      fitTextToWidth({
+        element: clone.querySelector('.canvas__title'),
+        maxWidth: 800,      // максимальная ширина, в которую нужно влезть
+        minFontSize: 20,    // минимальный допустимый размер
+        step: 10             // шаг уменьшения
+      });
+
+
+
+
 
       // Даем время на рендеринг
       await new Promise(resolve => setTimeout(resolve, 100));
@@ -242,4 +253,36 @@ document.addEventListener('DOMContentLoaded', () => {
   // Инициализация
   generateBtn.addEventListener('click', generateAllImages);
   log('Система инициализирована. Нажмите "Сгенерировать изображения"');
+
+
+
+
+
+
+  function fitTextToWidth({ element, maxWidth, minFontSize = 30, step = 2}) {
+    const el = typeof element === 'string' ? document.getElementById(element) : element;
+    console.log(element);
+    
+    let currentStyle = el.getAttribute("style") || "";
+    let fontSizeMatch = currentStyle.match(/font-size:\s*(\d+)px/);
+    let fontSize = fontSizeMatch ? parseInt(fontSizeMatch[1], 10) : 100; // если нет font-size — ставим базовый 100
+
+    while (el.scrollWidth > maxWidth && fontSize > minFontSize) {
+      console.log(el.scrollWidth, maxWidth, fontSize, minFontSize);
+      
+
+      fontSize -= step;
+
+      // Удаляем старый font-size из style
+      const newStyle = currentStyle
+        .split(";")
+        .map(rule => rule.trim())
+        .filter(rule => rule && !rule.startsWith("font-size"))
+
+      // Обновляем style с новым font-size
+      currentStyle = `${newStyle} font-size: ${fontSize}px;`;
+      el.setAttribute("style", currentStyle);
+    }
+  }
+
 });
